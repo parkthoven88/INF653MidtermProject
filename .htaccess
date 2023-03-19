@@ -1,0 +1,8 @@
+SetEnv USERNAME "hyojinpark"
+SetEnv PASSWORD "twKwhz3Z4KT9SaLmCHSYNu3x5PZGTzn2"
+SetEnv DBNAME "quotesdb_z9hk"
+SetEnv HOST "dpg-cg38qopmbg5fch3he0a0-a.ohio-postgres.render.com"
+SetEnv PORT "5432"
+
+
+
