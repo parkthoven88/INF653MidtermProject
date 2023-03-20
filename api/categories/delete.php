@@ -13,15 +13,15 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate Category object
   $categories = new Category($db);
 
-  // Get raw posted data
+  // Get raw Catgory data
   $data = json_decode(file_get_contents("php://input"));
 
   $categories->id = $data->id;
-  // Create authors
-  if($categories->update()) {
+  // Delete categories
+  if($categories->delete()) {
     echo json_encode(
         array('message' => 'Categories Deleted')
     );

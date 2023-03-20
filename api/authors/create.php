@@ -12,10 +12,10 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate Author object
   $authors = new Author($db);
 
-  // Get raw posted data
+  // Get raw Author data
   $data = json_decode(file_get_contents("php://input"));
 
   $authors->id = $data->id;

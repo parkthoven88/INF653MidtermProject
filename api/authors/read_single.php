@@ -26,5 +26,5 @@
   );
 
   // Make JSON
-  print_r(json_encode($authors_arr));
+  print_r(json_encode($authors_arr, JSON_NUMERIC_CHECK));
   ?>

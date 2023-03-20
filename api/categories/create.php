@@ -13,16 +13,16 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate category object
   $categories = new Category($db);
 
-  // Get raw posted data
+  // Get raw category data
   $data = json_decode(file_get_contents("php://input"));
 
   $categories->id = $data->id;
   $categories->category = $data->category;
 
-  // Create authors
+  // Create Category
   if($categories->create()) {
     echo json_encode(
         array('message' => 'Categories Created')
