@@ -22,7 +22,6 @@
   if($num > 0) {
     //Quote array
     $authors_arr = array();
-    //$author_arr['data'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
        extract($row);
@@ -43,6 +42,6 @@
   } else {
 
     //No Posts
-    echo json_encode(array('message' => 'No Posts Found'));
+    echo json_encode(array('message' => 'No Authors Found'));
   }
   ?>

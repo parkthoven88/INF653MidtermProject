@@ -19,19 +19,21 @@
             $query = 'SELECT 
                 id, 
                 author
-                
             FROM
                 ' . $this->table . '
-            ORDER BY
-            id';
+            ORDER BY id';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);
-
-            //Execute query
-            $stmt->execute();
-
-            return $stmt;
+            
+            try { 
+                $stmt->execute();
+                return $stmt;
+              }
+              // Execution of query fails
+              catch(PDOException $e) {
+                echo json_encode(array('message :' . $e->getMessage()));
+              }
         }
         // Get single author
         public function read_single(){
@@ -43,7 +45,7 @@
             FROM
                 ' . $this->table . '
                 WHERE
-                id = ?
+                id = :id
                 LIMIT 1';
             
             //Prepare statement
@@ -52,15 +54,22 @@
             // Bind ID
             $stmt->bindParam(1, $this->id);
             
-            //Execute query
-            $stmt->execute();
-            
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Set properties
-            $this->id = $row['id'];
-            $this->author = $row['author'];
-            
+            try { 
+                $stmt->execute();
+                // Fetch one associative array
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                // Check if row returns array
+                if(is_array($row)){
+                  // Set properties
+                  $this->id = $row['id'];
+                  $this->author = $row['author'];
+                }
+                return $stmt;
+                }
+                // Execution of query fails
+                catch(PDOException $e) {
+                        echo json_encode(array('message :' . $e->getMessage()));
+                }
         }
 
         public function create() {
