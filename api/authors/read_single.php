@@ -28,7 +28,7 @@
     echo json_encode($authors_arr, JSON_NUMERIC_CHECK);
   }
   else{
-    echo json_encode(array('massage' => 'author_id Not Found'));
+    echo json_encode(array('message' => 'author_id Not Found'));
   }
   
   ?>

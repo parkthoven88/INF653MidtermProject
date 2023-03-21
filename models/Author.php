@@ -35,7 +35,6 @@
             //Create query
             $query = 'SELECT 
                 author
-                
             FROM
                 ' .$this->table . '
                 WHERE
