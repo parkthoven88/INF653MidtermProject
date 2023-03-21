@@ -26,7 +26,7 @@
 
   if($categories->category !== null){
     //Convert to JSON and output
-    echo json_encode($categories_array,  JSON_NUMERIC_CHECK);
+    echo json_encode($categories_array, JSON_NUMERIC_CHECK);
   }
   else{
       echo json_encode(array('message' => 'category_id Not Found'));
