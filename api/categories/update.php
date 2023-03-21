@@ -22,10 +22,10 @@
   if(isset($data->category)){
     //Set id for update
     $categories->id = $data->id;
-    $categories->$category = $data->$category;
+    $categories->category = $data->category;
     $categories->update();
     
-    echo json_encode(array('id'=>$categories->id, 'author'=>$categories->$category));
+    echo json_encode(array('id'=>$categories->id, 'category'=>$categories->category));
   }
   else {
     echo json_encode(array('message' => 'Missing Required Parameters'));

@@ -25,9 +25,7 @@
   if (isset($data->category)) {
     $categories->category = $data->category;
     $categories->create();
-    echo json_encode(
-        array("id"=> $db->lastInsertId(), "category"=>$categories->category)
-    );
+    echo json_encode(array("id"=> $db->lastInsertId(), "category"=>$categories->category));
 } else {
     echo json_encode(
         array('message' => 'Missing Required Parameters')

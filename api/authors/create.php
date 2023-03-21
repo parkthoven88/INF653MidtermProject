@@ -18,7 +18,7 @@
   // Get raw Author data
   $data = json_decode(file_get_contents("php://input"));
 
-  if(isset($data->authors)){ 
+  if(isset($data->author)){ 
     
     $authors->author = $data->author;
     $authors->create();

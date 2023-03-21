@@ -12,7 +12,7 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate Author object
   $authors = new Author($db);
 
   // Get raw posted data
