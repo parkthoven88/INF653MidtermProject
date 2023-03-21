@@ -46,7 +46,7 @@
     $quotes->category_id = isset($_GET['category_id']) ? $_GET['category_id'] : die();
     
     //quote query
-    $result = $quote->read_single();
+    $result = $quotes->read_single();
 
     $num = $result->rowCount();
 

@@ -33,7 +33,7 @@ $quotes->author_id = $data->author_id;
 $quotes->category_id = $data->category_id;
 
 //Update Category
-if($quote->update()) {
+if($quotes->update()) {
     echo json_encode(
         array('id'=>$quotes->id,
         'quote'=>$quotes->quote, 

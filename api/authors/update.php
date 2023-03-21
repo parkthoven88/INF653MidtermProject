@@ -22,7 +22,7 @@
     //Set id for update
     $authors->id = $data->id;
     $authors->author = $data->author;
-    $author->update();
+    $authors->update();
     
     echo json_encode(array('id'=>$authors->id, 'author'=>$authors->author));
   }
