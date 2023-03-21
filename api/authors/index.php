@@ -16,6 +16,7 @@
 
 
     if ($method === 'GET') {
+        
         //checking URL if it has a query statement like id=1
         if (parse_url($uri, PHP_URL_QUERY)){
             require('read_single.php');

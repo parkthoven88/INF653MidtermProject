@@ -10,39 +10,36 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate Category object
   $category = new Category($db);
 
-  //Blog quote query
+  //Category query
   $result = $category->read();
+
   //Get row count
   $num = $result->rowCount();
 
-  //Check if any posts
-  if($num > 0) {
-    //Quote array
+  // Check if any category
+  if($num > 0){
+    //Author array
     $category_arr = array();
-    //$author_arr['data'] = array();
+    //$authors_arr['data'] = array();
 
-    while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       extract($row);
+      while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
 
-       $category_item = array(
-            'id' => $id,
-            'category' => $category
-       );
+        $category_item = array(
+          'id' => $id, 
+          'category' => $category);
 
-       //Push to "data"
-       //array_push($author_arr['data'], $author_item);
-       array_push($category_arr, $category_item);
-    }
+        //Push to "data"
+        array_push($category_arr, $category_item);
+      }
 
     //Turn to JSON & output
     echo json_encode($category_arr);
-
-  } else {
-
-    //No Posts
-    echo json_encode(array('message' => 'No Posts Found'));
-  }
+    }
+    else{
+      echo json_encode(array('message' => 'No Categories found'));
+    }
   ?>

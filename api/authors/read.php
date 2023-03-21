@@ -10,38 +10,37 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate Author object
   $authors = new Author($db);
 
-  //Blog quote query
+  // Author query
   $result = $authors->read();
+
   //Get row count
   $num = $result->rowCount();
 
-  //Check if any posts
-  if($num > 0) {
-    //Quote array
+
+  // Check if any authors
+  if($num > 0){
+    //Author array
     $authors_arr = array();
+    //$authors_arr['data'] = array();
 
-    while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-       extract($row);
+      while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
 
-       $authors_item = array(
-            'id' => $id,
-            'author' => $author
-       );
+        $authors_item = array(
+          'id' => $id, 
+          'author' => $author);
 
-       //Push to "data"
-       //array_push($author_arr['data'], $author_item);
-       array_push($authors_arr, $authors_item);
-    }
+        //Push to "data"
+        array_push($authors_arr, $authors_item);
+      }
 
     //Turn to JSON & output
     echo json_encode($authors_arr);
-
-  } else {
-
-    //No Posts
-    echo json_encode(array('message' => 'No Authors Found'));
-  }
+    }
+    else{
+      echo json_encode(array('message' => 'No Authors found'));
+    }
   ?>

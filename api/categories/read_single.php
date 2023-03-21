@@ -20,11 +20,15 @@
   $categories->read_single();
 
   // Create array
-  $categories_arr = array(
-    'id' => $categories->id,
-    'author' => $categories->category
-  );
+  $categories_array = array(
+    "id" => $categories->id,
+    "category" => $categories->category);
 
-  // Make JSON
-  print_r(json_encode($categories_arr));
+  if($categories->category !== null){
+    //Convert to JSON and output
+    echo json_encode($categories_array,  JSON_NUMERIC_CHECK);
+  }
+  else{
+      echo json_encode(array('message' => 'category_id Not Found'));
+  }
   ?>

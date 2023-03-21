@@ -18,17 +18,16 @@
 
   // Get raw Catgory data
   $data = json_decode(file_get_contents("php://input"));
-
+  
+  //Set id for Delete
   $categories->id = $data->id;
-  // Delete categories
+
   if($categories->delete()) {
-    echo json_encode(
-        array('message' => 'Categories Deleted')
-    );
-  } else {
-    echo json_encode(
-        array('message' => 'Categories Not Deleted')
-    );
-    }
+    echo json_encode(array('id'=>$categories->id));
+  } 
+
+  else {
+    echo json_encode(array('message' => 'Category Not deleted'));
+  }
   
 ?>

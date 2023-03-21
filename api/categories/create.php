@@ -19,18 +19,30 @@
   // Get raw category data
   $data = json_decode(file_get_contents("php://input"));
 
-  $categories->id = $data->id;
-  $categories->category = $data->category;
+  //$categories->id = $data->id;
+  //$categories->category = $data->category;
 
-  // Create Category
-  if($categories->create()) {
+  if (isset($data->category)) {
+    $categories->category = $data->category;
+    $categories->create();
     echo json_encode(
-        array('message' => 'Categories Created')
+        array("id"=> $db->lastInsertId(), "category"=>$categories->category)
     );
-  } else {
+} else {
     echo json_encode(
-        array('message' => 'Categories Not Created')
+        array('message' => 'Missing Required Parameters')
     );
-    }
+}
+
+
+    // if($categories->create()) {
+    //   echo json_encode(
+    //       array('message' => 'Categories Created')
+    //   );
+    // } else {
+    //   echo json_encode(
+    //       array('message' => 'Categories Not Created')
+    //   );
+    //   }
   
 ?>

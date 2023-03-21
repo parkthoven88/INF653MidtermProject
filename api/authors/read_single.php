@@ -19,12 +19,16 @@
   // Get Author
   $authors->read_single();
 
-  // Create array
-  $authors_arr = array(
+  //Create Array
+  $author_arr = array(
     'id' => $authors->id,
-    'author' => $authors->author
-  );
-
-  // Make JSON
-  print_r(json_encode($authors_arr));
+    'author'=> $authors->author);
+  
+  if($authors->author !== null){
+    print_r(json_encode($author_arr, JSON_NUMERIC_CHECK));
+  }
+  else{
+    echo json_encode(array('massage' => 'author_id Nor Found'));
+  }
+  
   ?>

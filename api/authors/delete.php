@@ -12,7 +12,7 @@
   $database = new Database();
   $db = $database->connect();
 
-  //Instantiate blog quote object
+  //Instantiate Author object
   $authors = new Author($db);
 
   // Get raw posted data
@@ -23,13 +23,11 @@
 
   // DELETE authors
   if($authors->delete()) {
-    echo json_encode(
-        array('message' => 'Author deleted')
-    );
-  } else {
-    echo json_encode(
-        array('message' => 'Author Not deleted')
-    );
-    }
+    echo json_encode(array('id'=>$authors->id));
+  } 
+
+  else {
+    echo json_encode(array('message' => 'Author Not deleted'));
+  }
   
 ?>

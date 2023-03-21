@@ -18,18 +18,16 @@
   // Get raw posted data
   $data = json_decode(file_get_contents("php://input"));
 
-  $authors->id = $data->id;
-  $authors->author = $data->author;
-
-  // Create authors
-  if($authors->update()) {
-    echo json_encode(
-        array('message' => 'Author updated')
-    );
-  } else {
-    echo json_encode(
-        array('message' => 'Author Not updated')
-    );
-    }
+  if(isset($data->author)){
+    //Set id for update
+    $authors->id = $data->id;
+    $authors->author = $data->author;
+    $author->update();
+    
+    echo json_encode(array('id'=>$authors->id, 'author'=>$authors->author));
+  }
+  else {
+    echo json_encode(array('message' => 'Missing Required Parameters'));
+  }
   
 ?>

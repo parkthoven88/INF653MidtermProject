@@ -18,18 +18,15 @@
   // Get raw Author data
   $data = json_decode(file_get_contents("php://input"));
 
-  $authors->id = $data->id;
-  $authors->author = $data->author;
+  if(isset($data->authors)){ 
+    
+    $authors->author = $data->author;
+    $authors->create();
+    echo json_encode(array("id"=> $db->lastInsertId(), "author"=>$authors->author));
+  }
+  else{
+    echo json_encode(array('message' => 'Missing Required Parameters'));
+  }
 
-  // Create authors
-  if($authors->create()) {
-    echo json_encode(
-        array('message' => 'Author Created')
-    );
-  } else {
-    echo json_encode(
-        array('message' => 'Author Not Created')
-    );
-    }
   
 ?>

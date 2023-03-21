@@ -11,23 +11,23 @@
   $db = $database->connect();
 
   //Instantiate blog quote object
-  $quote = new Quote($db);
+  $quotes = new Quote($db);
 
   //Blog quote query
-  $result = $quote->read();
+  $result = $quotes->read();
   //Get row count
   $num = $result->rowCount();
 
   //Check if any posts
   if($num > 0) {
     //Quote array
-    $quote_arr = array();
+    $quotes_arr = array();
     // $quote_arr['data'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
        extract($row);
 
-       $quote_item = array(
+       $quotes_item = array(
             'id' => $id,
             'quote' => $quote,
             'author' => $author, //html_entity_decode($author_id),
@@ -35,7 +35,7 @@
        );
 
        //Push to "data"
-       array_push($quote_arr, $quote_item);
+       array_push($quotes_arr, $quotes_item);
     }
 
     //Turn to JSON & output
@@ -44,6 +44,6 @@
   } else {
 
     //No Posts
-    echo json_encode(array('message' => 'No Posts Found'));
+    echo json_encode(array('message' => 'No Quote Found'));
   }
   ?>
