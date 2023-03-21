@@ -22,16 +22,16 @@
         public function read() {
             //Create query
             $query = 'SELECT 
-                q.id, 
-                q.quote, 
-                a.author, 
-                c.category
+            a.author,
+            c.category,
+            q.quote, 
+            q.id
             FROM 
             ' . $this->table . ' q 
-            INNER JOIN authors a
-                ON q.author_id = a.id
-            INNER JOIN categories c
-                ON q.category_id = c.id';
+            LEFT JOIN 
+                authors a ON author_id = a.id
+            LEFT JOIN
+                categories c ON category_id = c.id';
 
             //Prepare statement
             $stmt = $this->conn->prepare($query);

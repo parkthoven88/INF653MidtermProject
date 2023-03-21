@@ -17,7 +17,7 @@
    
     $quotes->id = isset($_GET['id']) ? $_GET['id'] : die();
         //quote query
-    $quote->read_single();
+    $quotes->read_single();
 
     //Create array
     $quotes_arr = array(

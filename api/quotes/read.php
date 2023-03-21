@@ -39,11 +39,11 @@
     }
 
     //Turn to JSON & output
-    echo json_encode($quote_arr);
+    echo json_encode($quotes_arr);
 
-  } else {
+    } else {
 
-    //No Posts
-    echo json_encode(array('message' => 'No Quote Found'));
-  }
+      //No Posts
+      echo json_encode(array('message' => 'No Quote Found'));
+    }
   ?>
